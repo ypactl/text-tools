@@ -23,7 +23,7 @@
             extra.push(set[i])
           }
         }
-        document.getElementById("erroanag").value = "[USE "+use+" ; REMOVE "+extra+"]"
+        document.getElementById("erroanag").innerHTML = "[USE "+use+" ; REMOVE "+extra+"]"
         requestAnimationFrame(ui)
       }
       ui()
