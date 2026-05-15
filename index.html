@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+  <body>
+    <style>
+      html {
+        font-family: "monospace", monospace;
+      }
+    </style>
+    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value=""><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="">
+    <script>
+      function ui() {
+        let use = document.getElementById("chooanag").value.split("")
+        let set = document.getElementById("testanag").value.split("")
+        let extra = []
+        for (let i = 0; i < set.length; i++) {
+          if (use.includes(set[i])) {
+            use.splice(use.indexOf(set[i]), 1)
+          } else {
+            extra.push(set[i])
+          }
+        }
+        document.getElementById("erroanag").value = "[USE "+use+" ; REMOVE "+extra+"]"
+        requestAnimationFrame(ui)
+      }
+      ui()
+    </script>
+  </body>
+</html>
