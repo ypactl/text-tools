@@ -10,7 +10,7 @@
         font-family: "monospace", monospace;
       }
     </style>
-    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()">
+    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
     <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><span id="resuperm">update plz</span><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()">
     <script>
       function anag() {
@@ -33,13 +33,13 @@
         let t = document.getElementById("chooperm").value
         let s = t.split("")
         let u = ""
-        for (let i = 0; i < t.length; i++) {
+        for (let i = 1; i < t.length; i++) {
           p*=BigInt(i)
         }
-        for (let i = 1; i < t.length-1; i++) {
+        for (let i = 0; i < t.length-2; i++) {
           u+=s.splice(Number(n/p),1)
           n-=(n/p)*p
-          p/=BigInt(t.length-i)
+          p/=BigInt(t.length-i-1)
         }
         document.getElementById("resuperm").innerHTML = u
       }
