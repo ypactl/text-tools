@@ -16,7 +16,7 @@
     TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
     <br>
     <br>You have spent
-    <p id="seconds">update plz</p><br>
+    <p id="seconds">update plz</p>
     seconds on this website.
     <script>
       var t = new Date().getTime()
@@ -81,7 +81,7 @@
             }
           }
         }
-        return p.map(v => v.map(v => ".#"[v])).join("\n")
+        return p.map(v => v.map(v => ".#"[Number(v)])).join("\n")
       }
       anag()
       perm()
