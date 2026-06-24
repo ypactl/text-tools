@@ -16,8 +16,8 @@
     TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
     <br>
     <br>You have spent
-    <span id="seconds">update plz</span>
-    seconds on this website.
+    <br><span id="seconds">update plz</span>
+    <br>seconds on this website.
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
       //alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
@@ -72,7 +72,7 @@
         }
         document.getElementById("resuperm").innerHTML = u+["",s,[s[0]+s[1],s[1]+s[0]][Number(n)]][s.length]
       }
-      function char(s) {
+      function char(s,x) {
         s=s.toString()
         let p = ".....".split("").map(v => ".".repeat(s.length*4).split("").map(v => "0"))
         for (let i = 0; i < s.length; i++) {
@@ -86,14 +86,14 @@
             }
           }
         }
-        return p.map(v => v.map(v => ".#"[Number(v)]).join("")).join("\n")
+        return p.map(v => v.map(v => ".#"[Number(v)]).join("")).join(["<br>","\n"][x])
       }
       anag()
       perm()
       setInterval(() => {
-        document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a")
+        document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a", 0)
       }, 250)
-      alert("TEST CHARS\n"+char("a2411a"))
+      alert("TEST CHARS\n"+char("a2411a", 1))
     </script>
   </body>
 </html>
