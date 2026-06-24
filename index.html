@@ -7,11 +7,13 @@
   <body>
     <style>
       html {
+        background-color: #00003f;
+        color: #ffffff;
         font-family: "monospace", monospace;
       }
     </style>
     <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
-    <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><span id="resuperm">update plz</span><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()">
+    <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
     <script>
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
@@ -33,6 +35,9 @@
         let t = document.getElementById("chooperm").value
         let s = t.split("")
         let u = ""
+        if (t.length == 0) {
+          document.getElementById("resuperm").innerHTML = ""
+        }
         for (let i = 1; i < t.length; i++) {
           p*=BigInt(i)
         }
@@ -43,7 +48,7 @@
           n-=(n/p)*p
           p/=BigInt(t.length-i-1)
         }
-        document.getElementById("resuperm").innerHTML = u+[s[0]+s[1],s[1]+s[0]][Number(n)]
+        document.getElementById("resuperm").innerHTML = u+["",s,[s[0]+s[1],s[1]+s[0]][Number(n)]][s.length]
       }
       anag()
       perm()
