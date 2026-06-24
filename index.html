@@ -21,7 +21,7 @@
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
       alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
-      //return false
+      return false
     }
       var t = new Date().getTime()
       var cc = "0123456789"
@@ -85,7 +85,7 @@
             }
           }
         }
-        return p.map(v => v.map(v => ".#"[Number(v)])).join("\n")
+        return p.map(v => v.map(v => ".#"[Number(v)]).join("")).join("\n")
       }
       anag()
       perm()
