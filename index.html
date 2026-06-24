@@ -12,9 +12,27 @@
         font-family: "monospace", monospace;
       }
     </style>
-    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
-    <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
+    TEXT ANAGRAM: <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
+    TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
+    <br>
+    <br>You have spent
+    <p id="seconds">update plz</p><br>
+    seconds on this website.
     <script>
+      var t = new Date().getTime()
+      var cc = "0123456789"
+      var ca = [
+        "111101101101111",
+        "110010010010111",
+        "110001010100111",
+        "110001010001110",
+        "011101111001001",
+        "111100110001110",
+        "011100110101010",
+        "111001010100100",
+        "010101010101010",
+        "010101011001110"
+      ]
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
         let set = document.getElementById("testanag").value.split("")
@@ -50,8 +68,26 @@
         }
         document.getElementById("resuperm").innerHTML = u+["",s,[s[0]+s[1],s[1]+s[0]][Number(n)]][s.length]
       }
+      function char(s) {
+        let p = ".....".split("").map(v => ".".repeat(s.length*4).split("").map(v => "0"))
+        for (let i = 0; i < s.length; i++) {
+          if (cc.includes(s[i])) {
+            for (let j = 0; j < 15; j++) {
+              p[Math.floor(j/3)][j%3+i*4] = ca[cc.indexOf(s[i])][j]
+            }
+          } else {
+            for (let j = 0; j < 15; j++) {
+              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*2)
+            }
+          }
+        }
+        return p.map(v => v.map(v => ".#"[v])).join("\n")
+      }
       anag()
       perm()
+      setInterval(() => {
+        char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a")
+      }, 250)
     </script>
   </body>
 </html>
