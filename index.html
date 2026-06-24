@@ -86,7 +86,7 @@
       anag()
       perm()
       setInterval(() => {
-        char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a")
+        document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a")
       }, 250)
     </script>
   </body>
