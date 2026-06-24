@@ -10,9 +10,9 @@
         font-family: "monospace", monospace;
       }
     </style>
-    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value=""><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="">
+    <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()">
     <script>
-      function ui() {
+      function anag() {
         let use = document.getElementById("chooanag").value.split("")
         let set = document.getElementById("testanag").value.split("")
         let extra = []
@@ -24,9 +24,8 @@
           }
         }
         document.getElementById("erroanag").innerHTML = "[USE "+use+" ; REMOVE "+extra+"]"
-        requestAnimationFrame(ui)
       }
-      ui()
+      anag()
     </script>
   </body>
 </html>
