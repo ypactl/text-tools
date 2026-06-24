@@ -43,7 +43,7 @@
           n-=(n/p)*p
           p/=BigInt(t.length-i-1)
         }
-        document.getElementById("resuperm").innerHTML = u
+        document.getElementById("resuperm").innerHTML = u+[s[0]+s[1],s[1]+s[0]][Number(n)]
       }
       anag()
       perm()
