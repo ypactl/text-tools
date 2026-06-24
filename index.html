@@ -11,6 +11,7 @@
       }
     </style>
     <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()">
+    <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><span id="resuperm">update plz</span><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()">
     <script>
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
@@ -25,7 +26,25 @@
         }
         document.getElementById("erroanag").innerHTML = "[USE "+use+" ; REMOVE "+extra+"]"
       }
+      function perm() {
+        document.getElementById("numbperm").value = document.getElementById("numbperm").value.split("").map(v=>["",v][Number("0123456789".includes(v))])
+        let n = BigInt(document.getElementById("numbperm").value)
+        let p = 1n
+        let t = document.getElementById("chooperm").value
+        let s = t.split("")
+        let u = ""
+        for (let i = 0; i < t.length; i++) {
+          p*=BigInt(i)
+        }
+        for (let i = 1; i < t.length-1; i++) {
+          u+=s.splice(Number(n/p),1)
+          n-=(n/p)*p
+          p/=BigInt(t.length-i)
+        }
+        document.getElementById("resuperm").innerHTML = u
+      }
       anag()
+      perm()
     </script>
   </body>
 </html>
