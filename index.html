@@ -19,6 +19,10 @@
     <p id="seconds">update plz</p>
     seconds on this website.
     <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+      alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
+      //return false
+    }
       var t = new Date().getTime()
       var cc = "0123456789"
       var ca = [
