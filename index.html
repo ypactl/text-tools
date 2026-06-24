@@ -87,7 +87,7 @@
             }
           }
         }
-        return p.map(v => v.map(v => ".#"[Number(v)]).join("")).join(["<br>","\n"][x])
+        return p.map(v => v.map(v => String.fromCharCode([10240,9608][Number(v)])).join("")).join(["<br>","\n"][x])
       }
       anag()
       perm()
