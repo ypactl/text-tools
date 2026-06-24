@@ -27,7 +27,7 @@
         document.getElementById("erroanag").innerHTML = "[USE "+use+" ; REMOVE "+extra+"]"
       }
       function perm() {
-        document.getElementById("numbperm").value = document.getElementById("numbperm").value.split("").map(v=>["",v][Number("0123456789".includes(v))])
+        document.getElementById("numbperm").value = document.getElementById("numbperm").value.split("").map(v=>["",v][Number("0123456789".includes(v))]).join("")
         let n = BigInt(document.getElementById("numbperm").value)
         let p = 1n
         let t = document.getElementById("chooperm").value
@@ -36,6 +36,8 @@
         for (let i = 1; i < t.length; i++) {
           p*=BigInt(i)
         }
+        n=n%(BigInt(t.length)*p)
+        document.getElementById("numbperm").value = n.toString()
         for (let i = 0; i < t.length-2; i++) {
           u+=s.splice(Number(n/p),1)
           n-=(n/p)*p
