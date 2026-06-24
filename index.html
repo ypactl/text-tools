@@ -75,25 +75,25 @@
       }
       function char(s,x) {
         s=s.toString()
-        let p = ".....".split("").map(v => ".".repeat(s.length*4).split("").map(v => "0"))
+        let p = ".....".split("").map(v => ".".repeat(s.length*4).split("").map(v => "0")
         for (let i = 0; i < s.length; i++) {
           if (cc.includes(s[i])) {
             for (let j = 0; j < 15; j++) {
-              p[Math.floor(j/3)][j%3+i*4] = ca[cc.indexOf(s[i])][j]
+              p[Math.floor(j/3)][j%3+i*4] = ca[cc.indexOf(s[i])][j]*2
             }
           } else {
             for (let j = 0; j < 15; j++) {
-              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*2)
+              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*3)
             }
           }
         }
-        return p.map(v => v.map(v => String.fromCharCode([10240,9608][Number(v)])).join("")).join(["<br>","\n"][x])
+        return p.map(v => v.map(v => String.fromCharCode([95,124,9608][Number(v)])).join("")).join(["<br>","\n"][x])
       }
       anag()
       perm()
       setInterval(() => {
         document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a", 0)
-      }, 250)
+      }, 100)
       alert("TEST CHARS\n"+char("a2411a", 1))
     </script>
   </body>
