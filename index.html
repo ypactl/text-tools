@@ -84,7 +84,7 @@
             }
           } else {
             for (let j = 0; j < 15; j++) {
-              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*(1.0625+j/16))
+              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*1.0625+j/16)
             }
           }
         }
@@ -95,7 +95,7 @@
       setInterval(() => {
         document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a", 0)
       }, 100)
-      alert("TEST CHARS\n"+char("a2411a", 1))
+      //alert("TEST CHARS\n"+char("a2411a", 1))
     </script>
   </body>
 </html>
