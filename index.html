@@ -8,6 +8,7 @@
     <style>
       html {
         background-color: #00003f;
+        line-height: 1;
         color: #ffffff;
         font-family: "monospace", monospace;
       }
@@ -83,11 +84,11 @@
             }
           } else {
             for (let j = 0; j < 15; j++) {
-              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*1.5)
+              p[Math.floor(j/3)][j%3+i*4] = Math.floor(Math.random()*(1.0625+j/16))
             }
           }
         }
-        return p.map(v => v.map(v => String.fromCharCode([95,9608][Number(v)])).join("")).join(["<br>","\n"][x])
+        return p.map(v => v.map(v => String.fromCharCode([46,9608][Number(v)])).join("")).join(["<br>","\n"][x])
       }
       anag()
       perm()
