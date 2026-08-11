@@ -90,6 +90,17 @@
         }
         return p.map(v => v.map(v => String.fromCharCode([46,9608][Number(v)])).join("")).join(["<br>","\n"][x])
       }
+      function rbi(seed, min, max) {
+        let h = 0x811c9dc5n
+        let str = String(seed)
+        let bst = 2n**BigInt(Math.ceil(str.length*Math.log10(2)+1))-1n
+        for (let i = 0; i < str.length; i++) {
+          h ^= BigInt(str.charCodeAt(i))
+          h = (h * 0x01000193n) & bst
+        }
+        let range = BigInt(max) - BigInt(min) + 1n
+        return BigInt(min) + (h % range)
+      }
       anag()
       perm()
       setInterval(() => {
