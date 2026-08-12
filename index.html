@@ -149,29 +149,13 @@
           v++
         }
         v = rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)
-        let d = []
+        let d = 0n
         for (let i = 0n; i < l; i++) {
-          d.splice(0, 0, v%26n)
-          v/=26n
-        }
-        let e = d.concat(d).map(v => 0n)
-        for (let i = l-1n; i >= 0n; i--) {
-          while ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"[e[i+l]] != s[i]) {
-            for (let j = 0n; j < l; j++) {
-              e[j+i+1n]+=d[j]
-              e[j+i]+=e[j+i+1n]/26n
-              e[j+i+1n]%=26n
-            }
+          while ((d*v/26n**i)%26n != "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(s[i])) {
+            d+=26n**i
           }
         }
-        e.splice(0, Number(l))
-        v = 0n
-        for (let i = 0n; i < l; i++) {
-          v*=26n
-          v+=e[0]
-          e.splice(0, 1)
-        }
-        document.getElementById("chooconu").value=v
+        document.getElementById("chooconu").value=d
         comb()
       }
       anag()
