@@ -23,9 +23,9 @@
     <br>seconds on this website.
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
-      alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
-      return false
-    }
+        alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
+        return false
+      }
       var t = new Date().getTime()
       var cc = "0123456789"
       var ca = [
@@ -165,13 +165,14 @@
           }
         }
         e.splice(0, Number(l))
-        let v = 0n
+        v = 0n
         for (let i = 0n; i < l; i++) {
           v+=e[0]
           v*=26n
           e.splice(0, 1)
         }
         document.getElementById("chooconu").value=v
+        comb()
       }
       anag()
       perm()
