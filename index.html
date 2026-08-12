@@ -95,15 +95,20 @@
         return p.map(v => v.map(v => String.fromCharCode([46,9608][Number(v)])).join("")).join(["<br>","\n"][x])
       }
       function rbi(seed, min, max) {
-        let h = 0x811c9dc5n
-        let str = String(seed)
-        let bst = 2n**BigInt(Math.ceil(str.length*Math.log10(2)+1))-1n
-        for (let i = 0; i < str.length; i++) {
-          h ^= BigInt(str.charCodeAt(i))
-          h = (h * 0x01000193n) & bst
+        let str = [...String(seed)].map(v => BigInt(v.codePointAt()))
+        let r = max-min+1n
+        let n = 3n
+        for (let i = 0n; i < 10n; i++) {
+          n=n**2n
+          n+=7n*i
+          n%=r
         }
-        let range = BigInt(max) - BigInt(min) + 1n
-        return BigInt(min) + (h % range)
+        for (let i = 0; i < str.length; i++) {
+          n=n**2n
+          n+=str[i]
+          n%=r
+        }
+        return n+min
       }
       function comb() {
         if (/^-?\d+$/.test(document.getElementById("choocole").value) && /^-?\d+$/.test(document.getElementById("chooconu").value)) {
