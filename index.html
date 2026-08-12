@@ -13,9 +13,9 @@
         font-family: "monospace", monospace;
       }
     </style>
-    TEXT ANAGRAM: <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
-    TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span><br>
-    LETTER COMBINATION: <label for="choocole">Type length</label><input type="text" id="choocole" value="" oninput="comb()"><label for="chooconu">Permutation Number</label><input type="text" id="chooconu" value="0" oninput="comb()"><br><span id="resucomb">update plz</span>
+    TEXT ANAGRAM: <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br><br>
+    TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span><br><br>
+    LETTER COMBINATION: <label for="choocole">Type length</label><input type="text" id="choocole" value="" oninput="comb()"><label for="chooconu">Permutation Number</label><input type="text" id="chooconu" value="0" oninput="comb()"><br><span id="resucomb">update plz</span><br>
     <label for="choocofi">Find</label><input type="text" id="choocofi" value=""><button onclick="cofi()"></button>
     <br>
     <br>You have spent
@@ -23,7 +23,7 @@
     <br>seconds on this website.
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
-      //alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
+      alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
       return false
     }
       var t = new Date().getTime()
