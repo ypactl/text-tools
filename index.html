@@ -40,7 +40,7 @@
         "010101011001110"
       ]
       function mod(x, y) {
-        return x-(x/y)*y
+        return (x-(x/y)*y)*(-1n)**(BigInt(x*y < 0n))
       }
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
@@ -109,7 +109,7 @@
         if (/^-?\d+$/.test(document.getElementById("choocole").value) && /^-?\d+$/.test(document.getElementById("chooconu").value)) {
           let l = BigInt(document.getElementById("choocole").value)
           let n = BigInt(document.getElementById("chooconu").value)
-          let v = 0
+          let v = 1n
           while (rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%2n == 0n || rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%13n == 0n) {
             v++
           }
