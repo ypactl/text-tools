@@ -15,6 +15,7 @@
     </style>
     TEXT ANAGRAM: <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
     TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span>
+    LETTER COMBINATION: <label for="choocole">Type length</label><input type="text" id="choocole" value="" oninput="comb()"><label for="chooconu">Permutation Number</label><input type="text" id="chooconum" value="0" oninput="comb()"><br><span id="resucomb">update plz</span>
     <br>
     <br>You have spent
     <br><span id="seconds">update plz</span>
@@ -38,6 +39,9 @@
         "010101010101010",
         "010101011001110"
       ]
+      function mod(x, y) {
+        return x-Math.floor(x/y)*y
+      }
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
         let set = document.getElementById("testanag").value.split("")
@@ -101,8 +105,38 @@
         let range = BigInt(max) - BigInt(min) + 1n
         return BigInt(min) + (h % range)
       }
+      function comb() {
+        if (isInteger(document.getElementById("choocole").value) && isInteger(document.getElementById("chooconu").value)) {
+          let l = BigInt(document.getElementById("choocole").value)
+          let n = BigInt(document.getElementById("chooconu").value)
+          let v = 0
+          while (rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%2n == 0n || rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%13n == 0n) {
+            v++
+          }
+          v = rbi(v, 26**l/3n, 26**l - 26**l/3n)
+          let a = (numer) => {
+            let numr = numer
+            let digits = ""
+            for (let i = 0n; i < l; i++) {
+              digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[numr%26n]+digits
+              numr/=26n
+            }
+            return digits
+          }
+          let t = ""
+          for (let i = 0; i < 45; i++) {
+            t+=a(mod(v*(BigInt(i)+n-22n), 26n**l))
+            t+=(" ".repeat(21)+"[]"+" ".repeat(22))[i]
+            if (i%5==4) t+="<br>"
+          }
+          document.getElementById("resucomb").innerHTML = t
+        } else {
+          document.getElementById("resucomb").innerHTML = "update plz"
+        }
+      }
       anag()
       perm()
+      comb()
       setInterval(() => {
         document.getElementById("seconds").innerHTML = char("a"+Math.floor((new Date().getTime()-t)/1000).toString()+"a", 0)
       }, 100)
