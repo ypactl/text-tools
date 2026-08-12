@@ -142,7 +142,7 @@
       }
       function cofi() {
         let s = document.getElementById("choocofi").value.split("").reverse().join("")
-        if (!s.split("").map(v => v.codePointAt()).filter((e) => {e < 65 || e > 90}).length > 0) {
+        if ([...s].map(v => v.codePointAt()).filter((v) => {v < 65 || v > 90}).length == 0) {
         let l = BigInt(s.length)
         document.getElementById("choocole").value = l
         let v = 2n
