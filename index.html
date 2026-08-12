@@ -40,7 +40,7 @@
         "010101011001110"
       ]
       function mod(x, y) {
-        return (x-(x/y)*y)-(y-1n)*BigInt(x*y < 0n)
+        return (x-(x/y)*y) + y*BigInt(x*y < 0n)
       }
       function anag() {
         let use = document.getElementById("chooanag").value.split("")
