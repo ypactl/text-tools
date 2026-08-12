@@ -23,7 +23,7 @@
     <br>seconds on this website.
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
-        alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
+        //alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
         return false
       }
       var t = new Date().getTime()
@@ -141,7 +141,10 @@
         }
       }
       function cofi() {
-        let s = document.getElementById("choocofi").value
+        let s = document.getElementById("choocofi").value.split("").reverse().join("")
+        if (s.split("").map(v => v.codePointAt()).filter((e) => {e < 65 || e > 89}).length > 0) {
+          return "update plz"
+        }
         let l = BigInt(s.length)
         document.getElementById("choocole").value = l
         let v = 2n
