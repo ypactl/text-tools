@@ -167,8 +167,8 @@
         e.splice(0, Number(l))
         v = 0n
         for (let i = 0n; i < l; i++) {
-          v+=e[0]
           v*=26n
+          v+=e[0]
           e.splice(0, 1)
         }
         document.getElementById("chooconu").value=v
