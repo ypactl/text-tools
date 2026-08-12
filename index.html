@@ -16,13 +16,14 @@
     TEXT ANAGRAM: <label for="chooanag">Type stuff</label><input type="text" id="chooanag" value="" oninput="anag()"><span id="erroanag">update plz</span><label for="testanag"></label><input type="text" id="testanag" value="" oninput="anag()"><br>
     TEXT PERMUTATION: <label for="chooperm">Type stuff</label><input type="text" id="chooperm" value="" oninput="perm()"><label for="numbperm">Permutation Number</label><input type="text" id="numbperm" value="0" oninput="perm()"><span id="resuperm">update plz</span><br>
     LETTER COMBINATION: <label for="choocole">Type length</label><input type="text" id="choocole" value="" oninput="comb()"><label for="chooconu">Permutation Number</label><input type="text" id="chooconu" value="0" oninput="comb()"><br><span id="resucomb">update plz</span>
+    <label for="choocofi">Find</label><input type="text" id="choocofi" value=""><button onclick="cofi()"></button>
     <br>
     <br>You have spent
     <br><span id="seconds">update plz</span>
     <br>seconds on this website.
     <script>
       window.onerror = function(message, source, lineno, colno, error) {
-      alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
+      //alert("Message: " + message + "\n" + "Line: " + lineno + "Col: " + colno)
       return false
     }
       var t = new Date().getTime()
@@ -139,6 +140,39 @@
           document.getElementById("resucomb").innerHTML = "update plz"
         }
       }
+      function cofi() {
+        let s = document.getElementById("choocofi").value
+        let l = BigInt(s.length)
+        document.getElementById("choocole") = l
+        let v = 2n
+        while (rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%2n == 0n || rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)%13n == 0n) {
+          v++
+        }
+        v = rbi(v, 26n**l/3n, 26n**l - 26n**l/3n)
+        let d = []
+        for (let i = 0n; i < l; i++) {
+          d.splice(0, 0, v%26n)
+          v/=26n
+        }
+        let e = d.concat(d).map(v => 0n)
+        for (let i = l-1n; i >= 0n; i--) {
+          while ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"[e[i+l]] != s[i]) {
+            for (let j = 0n; j < l; j++) {
+              e[j+i+1n]+=d[j]
+              e[j+i]+=e[j+i+1n]/26n
+              e[j+i+1n]%=26n
+            }
+          }
+        }
+      }
+      e.splice(0, Number(l))
+      let v = 0n
+      for (let i = 0n; i < l; i++) {
+        v+=e[0]
+        v*=26n
+        e.splice(0, 1)
+      }
+      document.getElementById("chooconu").value=v
       anag()
       perm()
       comb()
