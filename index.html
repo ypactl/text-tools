@@ -108,7 +108,7 @@
         return BigInt(min) + (h % range)
       }
       function comb() {
-        if (isInteger(document.getElementById("choocole").value) && isInteger(document.getElementById("chooconu").value)) {
+        if (document.getElementById("choocole").value.isInteger() && document.getElementById("chooconu").value.isInteger()) {
           let l = BigInt(document.getElementById("choocole").value)
           let n = BigInt(document.getElementById("chooconu").value)
           let v = 0
